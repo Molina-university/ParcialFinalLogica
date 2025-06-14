@@ -15,16 +15,16 @@ public class Temperatura {
             }
         }
     }
-    public static int TemperaturasAltas(int[][] ciudades) {
-        int contadorTemperaturasAltas = 0;
+    public static int DiasCalurosos(int[][] ciudades) {
+        int contadorDiasCalurosos = 0;
         for (int i = 0; i < ciudades.length; i++) {
             for (int j = 0; j < ciudades[i].length; j++) {
                 if (ciudades[i][j] > 30) {
-                    contadorTemperaturasAltas++;
+                    contadorDiasCalurosos++;
                 }
             }
         }
-        return contadorTemperaturasAltas;
+        return contadorDiasCalurosos;
     }
     public static int[] CiudadMasCaliente(int[][] ciudades) {
         int maxTemp = Integer.MIN_VALUE;
@@ -42,19 +42,28 @@ public class Temperatura {
         return Ubicacion;
     }
 
-    public static double promedioTemperaturasBajas(int[][] ciudades) {
-        int suma = 0, contadorTemperaturasBajas = 0;
+    public static double promedioDiasFrescos(int[][] ciudades) {
+        int suma = 0, contadorDiasFrescos = 0;
         for (int i = 0; i < ciudades.length; i++) {
             for (int j = 0; j < ciudades[i].length; j++) {
                 if (ciudades[i][j] < 20) {
                     suma += ciudades[i][j];
-                    contadorTemperaturasBajas++;
+                    contadorDiasFrescos++;
                 }
             }
         }
-        return contadorTemperaturasBajas > 0 ? (double) suma / contadorTemperaturasBajas : 0;
+        return contadorDiasFrescos > 0 ? (double) suma / contadorDiasFrescos : 0;
     }
-    
+    // aca voy a mostrar las temperaturas de las ciudades para que sepan como estan las temperaturas en consola
+    public static void mostrarTemperaturas(int[][] ciudades) {
+        for (int i = 0; i < ciudades.length; i++) {
+            for (int j = 0; j < ciudades[i].length; j++) {
+                System.out.print(ciudades[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+
     public static void main(String[] args) {
         int[][] temperaturas = {
             {45, 15, 25, 35, 30},
@@ -65,9 +74,9 @@ public class Temperatura {
         TemperaturasMuyAltas(temperaturas);
         int[] MayorTemperatura = CiudadMasCaliente(temperaturas);
         
-        System.out.println("ciudades con temperatura mayor a 30°: [ " + TemperaturasAltas(temperaturas) + " ], se recomienda llevar una barra de hielo porque con esas calores hasta las llantas se derriten :v");
+        System.out.println("ciudades con temperatura mayor a 30°: [ " + DiasCalurosos(temperaturas) + " ], se recomienda llevar una barra de hielo porque con esas calores hasta las llantas se derriten :v");
         System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------");
-        System.out.println("Promedio de temperaturas de ciudades menores a 20°: " + promedioTemperaturasBajas(temperaturas));
+        System.out.println("Promedio de temperaturas de ciudades menores a 20°: " + promedioDiasFrescos(temperaturas));
         System.out.println("---------------------------------------------------------");
         System.out.println("la ciudad con la mayor temperatura registrada se encuentra en la posición: [" + MayorTemperatura[0] + "][" + MayorTemperatura[1] + "]");
         System.out.println("---------------------------------------------------------------------------------");

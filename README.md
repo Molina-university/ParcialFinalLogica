@@ -23,4 +23,3 @@ Se registra la temperatura diaria durante una semana en varias ciudades. Cada fi
 
 1. lo que deseen, especificar qué hace y por qué lo elegiste.
 
----
